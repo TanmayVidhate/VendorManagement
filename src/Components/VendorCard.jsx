@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 
 import { mockVendors } from "../data/Vendor"
 import { useState } from "react";
+
 function VendorCard() {
 
   const { id } = useParams();
@@ -15,7 +16,7 @@ function VendorCard() {
             <h2 className="text-xl font-bold text-gray-800">{record.name}</h2>
             <span
               className={`px-3 py-1 rounded-full text-sm font-semibold ${record.status === "Active"
-                ? "bg-green-100 text-green-700"
+                ? "bg-green-200 text-green-700"
                 : "bg-gray-200 text-gray-700"
                 }`}
             >
