@@ -66,7 +66,8 @@ const tableHeadings = [
     "Contact Person",
     "Email",
     "Status",
-    "Rating"
+    "Rating",
+    "Views"
 ];
 
 export {
