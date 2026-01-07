@@ -1,9 +1,11 @@
+import VendorList from "./Components/VendorList"
+
 function App() {
-  
+
 
   return (
     <>
-      
+      <VendorList />
     </>
   )
 }
