@@ -1,6 +1,9 @@
 
 //import dummmy data
-import { mockVendors, tableHeadings } from '../data/Vendor'
+import { tableHeadings } from '../data/Vendor'
+
+// import  Component
+import VendorTableRow from './VendorTableRow'
 
 function VendorList() {
     return (
@@ -22,26 +25,7 @@ function VendorList() {
                             </tr>
                         </thead>
                         <tbody >
-                            {
-
-                                mockVendors.map((mockVendor, i) => {
-                                    const { id, name, serviceType, contactPerson, email, status, rating } = mockVendor;
-
-                                    return (
-                                        <tr className='border border-gray-500 text-center' key={id}>
-                                            <td className='p-5'>{name}</td>
-                                            <td>{serviceType}</td>
-                                            <td>{contactPerson}</td>
-                                            <td>{email}</td>
-                                            <td className={
-                                                status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-700"
-                                            }>{status}</td>
-                                            <td >{rating}</td>
-
-                                        </tr>
-                                    )
-                                })
-                            }
+                            <VendorTableRow/>
                         </tbody>
                     </table>
                 </div>
