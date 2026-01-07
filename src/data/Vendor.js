@@ -58,3 +58,8 @@ const mockVendors = [{
     rating: 4.6,
     lastUsed: "2025-01-06"
 }];
+
+
+export {
+    mockVendors
+}
