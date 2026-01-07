@@ -13,7 +13,7 @@ function VendorList() {
                 <div className='h-full flex justify-center items-center  '>
 
                     <table className="w-4/5 rounded-lg overflow-hidden text-white  border-white font-bold">
-                        <thead className="bg-blue-600 text-white">
+                        <thead className="bg-white text-black">
                             <tr>
                                 {
                                     tableHeadings.map((tableHeading, i) => {
