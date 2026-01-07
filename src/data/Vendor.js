@@ -60,6 +60,15 @@ const mockVendors = [{
 }];
 
 
+const tableHeadings = [
+    "Name",
+    "Service Type",
+    "Contact Person",
+    "Email",
+    "Status",
+    "Rating"
+];
+
 export {
-    mockVendors
+    mockVendors, tableHeadings
 }
