@@ -6,29 +6,29 @@ function VendorList() {
     return (
         <>
             {/* Main Div / outer Divs */}
-            <div>
-                <div>
+            <div className='w-screen h-screen '>
+                <div className='h-full flex justify-center items-center  '>
 
-                    <table className="w-[80%] ">
+                    <table className="w-4/5 border border-gray-300 rounded-lg overflow-hidden ">
                         <thead className="bg-blue-600 text-white">
                             <tr>
                                 {
                                     tableHeadings.map((tableHeading, i) => {
                                         return (
-                                            <th className="p-2 text-left">{tableHeading}</th>
+                                            <th className="p-2 text-left" key={i}>{tableHeading}</th>
                                         )
                                     })
                                 }
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='bg-gray-50 divide-y divide-gray-200'>
                             {
                                 mockVendors.map((mockVendor, i) => {
                                     const { id, name, serviceType, contactPerson, email, status, rating } = mockVendor;
 
                                     return (
                                         <tr key={id}>
-                                            <td>{name}</td>
+                                            <td className='p-4' >{name}</td>
                                             <td>{serviceType}</td>
                                             <td>{contactPerson}</td>
                                             <td>{email}</td>
