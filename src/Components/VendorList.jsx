@@ -31,8 +31,10 @@ function VendorList() {
                                             <td>{serviceType}</td>
                                             <td>{contactPerson}</td>
                                             <td>{email}</td>
-                                            <td>{status}</td>
-                                            <td className=''>{rating}</td>
+                                            <td className={
+                                                status === "Active" ? "bg-green-100 text-green-700":"bg-gray-200 text-gray-700"
+                                            }>{status}</td>
+                                            <td >{rating}</td>
                                         </tr>
                                     )
                                 })
