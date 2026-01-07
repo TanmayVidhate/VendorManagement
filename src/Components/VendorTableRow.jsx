@@ -16,9 +16,8 @@ function VendorTableRow() {
                             <td>{serviceType}</td>
                             <td>{contactPerson}</td>
                             <td>{email}</td>
-                            <td className={
-                                status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-700"
-                            }>{status}</td>
+                            <td >
+                                <span className={`px-7 py-3 rounded-full text-justify  ${status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-700"}`} >{status}</span></td>
                             <td >{rating}</td>
 
                         </tr>
