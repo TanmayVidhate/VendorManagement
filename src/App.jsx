@@ -4,6 +4,10 @@ import  {Routes, Route } from "react-router-dom"
 import VendorList from "./Components/VendorList"
 import VendorCard from "./Components/VendorCard"
 
+//import Views
+import AddNewVendor from "./Views/AddNewVendor"
+
+
 function App() {
 
 
@@ -12,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<VendorList />} />
         <Route path="/vendorcard/:id" element={<VendorCard />} />
+        <Route path="/addvendor" element={<AddNewVendor/>} />
       </Routes>
     </>
   )
