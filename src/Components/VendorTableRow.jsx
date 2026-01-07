@@ -2,6 +2,8 @@
 //import dummmy data
 import { mockVendors } from '../data/Vendor'
 
+//import lucid icons
+import { Eye } from 'lucide-react';
 
 function VendorTableRow() {
     return (
@@ -19,9 +21,9 @@ function VendorTableRow() {
                             <td >
                                 <span className={`px-7 py-3 rounded-full text-justify  ${status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-700"}`} >{status}</span>
                             </td>
-                            
-                            <td >{rating}</td>
 
+                            <td >{rating}</td>
+                            <td ><Eye /></td>
                         </tr>
                     )
                 })
