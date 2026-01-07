@@ -1,6 +1,6 @@
 
 //import dummmy data
-import { mockVendors } from '../data/Vendor'
+import { mockVendors, tableHeadings } from '../data/Vendor'
 
 function VendorList() {
     return (
@@ -9,15 +9,16 @@ function VendorList() {
             <div>
                 <div>
 
-                    <table border="1" cellPadding="10" cellSpacing="0">
-                        <thead>
+                    <table className="w-[80%] ">
+                        <thead className="bg-blue-600 text-white">
                             <tr>
-                                <th>Name</th>
-                                <th>Service Type</th>
-                                <th>Contact Person</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Rating</th>
+                                {
+                                    tableHeadings.map((tableHeading, i) => {
+                                        return (
+                                            <th className="p-2 text-left">{tableHeading}</th>
+                                        )
+                                    })
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -32,7 +33,7 @@ function VendorList() {
                                             <td>{contactPerson}</td>
                                             <td>{email}</td>
                                             <td className={
-                                                status === "Active" ? "bg-green-100 text-green-700":"bg-gray-200 text-gray-700"
+                                                status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-700"
                                             }>{status}</td>
                                             <td >{rating}</td>
                                         </tr>
