@@ -9,10 +9,10 @@ function VendorList() {
     return (
         <>
             {/* Main Div / outer Divs */}
-            <div className='w-screen h-screen '>
+            <div className='w-screen h-screen bg-gradient-to-t from-red-500  to-fuchsia-600  '>
                 <div className='h-full flex justify-center items-center  '>
 
-                    <table className="w-4/5 border border-gray-300 rounded-lg overflow-hidden ">
+                    <table className="w-4/5 rounded-lg overflow-hidden text-white  border-white font-bold">
                         <thead className="bg-blue-600 text-white">
                             <tr>
                                 {
