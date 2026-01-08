@@ -9,13 +9,13 @@ import StatusBadge from "../Components/StatusBadge"
 //import lucid icons
 import { Eye } from 'lucide-react';
 
-function VendorTableRow() {
+function VendorTableRow({filteredVendors}) {
 
     const navigate = useNavigate();
     return (
         <>
             {
-                mockVendors.map((mockVendor, i) => {
+                filteredVendors.map((mockVendor, i) => {
                     const { id, name, serviceType, contactPerson, email, status, rating } = mockVendor;
 
                     return (
