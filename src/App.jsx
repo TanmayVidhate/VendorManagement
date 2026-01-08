@@ -6,6 +6,7 @@ import VendorCard from "./Components/VendorCard"
 
 //import Views
 import AddNewVendor from "./Views/AddNewVendor"
+import ViewAllDetailsOfVendor from "./Views/ViewAllDetailsOfVendor"
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<VendorList />} />
-        <Route path="/vendorcard/:id" element={<VendorCard />} />
+        <Route path="/viewallDetailsofvendor/:id" element={<ViewAllDetailsOfVendor />} />
         <Route path="/addvendor" element={<AddNewVendor/>} />
       </Routes>
     </>
