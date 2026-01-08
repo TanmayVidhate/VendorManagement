@@ -15,7 +15,7 @@ function VendorTableRow({filteredVendors}) {
     return (
         <>
             {
-                filteredVendors.map((mockVendor, i) => {
+                filteredVendors?.map((mockVendor, i) => {
                     const { id, name, serviceType, contactPerson, email, status, rating } = mockVendor;
 
                     return (

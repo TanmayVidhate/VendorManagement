@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 //import dummmy data
-import { tableHeadings,mockVendors } from '../data/Vendor'
+import { tableHeadings, mockVendors } from '../data/Vendor'
 
 // import  Component
 import VendorTableRow from './VendorTableRow'
@@ -14,21 +14,39 @@ import { Plus } from 'lucide-react';
 function VendorList() {
 
     const [searchText, setSearchText] = useState("");
+    const [statusFilter, setStatusFilter] = useState("");
+    const [serviceTypeFilter,setServiceTypeFilter] = useState("");
+
 
     const navigate = useNavigate();
 
     // Filter vendors from name
-    const filteredVendors = mockVendors.filter(vendor =>
-        vendor.name.toLowerCase().includes(searchText.toLowerCase())
-    );
+    const filteredVendors = mockVendors.filter(mockVendor => {
+
+        const searchMatch = !searchText || mockVendor.name.toLowerCase().includes(searchText.toLowerCase());
+        const statusMatch = !statusFilter || mockVendor.status === statusFilter;
+        const typeMatch = !serviceTypeFilter || mockVendor.serviceType === serviceTypeFilter;
+
+        return searchMatch && statusMatch && typeMatch ;
+    });
 
     return (
         <>
             {/* Main Div / outer Divs */}
             <div className='w-screen h-screen bg-gradient-to-t from-red-500  to-fuchsia-600 relative '>
                 <div className='absolute w-full h-20 flex items-end justify-center'>
-                    <FilterBar searchText={searchText} setSearchText={setSearchText} />
+                    <FilterBar
+                        searchText={searchText}
+                        setSearchText={setSearchText}
+
+                        statusFilter={statusFilter}
+                        setStatusFilter={setStatusFilter}
+
+                        serviceTypeFilter={serviceTypeFilter}
+                        setServiceTypeFilter={setServiceTypeFilter}
+                    />
                 </div>
+                
                 <div className='h-full flex justify-center items-center  '>
 
                     <table className="w-4/5 rounded-lg overflow-hidden text-white  border-white font-bold">
