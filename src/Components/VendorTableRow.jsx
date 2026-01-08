@@ -25,7 +25,7 @@ function VendorTableRow() {
                                 <span className={`px-7 py-3 rounded-full text-justify  ${status === "Active" ? "bg-green-200 text-green-700" : "bg-gray-300 text-gray-500"}`} >{status}</span>
                             </td>
                             <td >{rating}</td>
-                            <td > <Eye className="cursor-pointer" onClick={()=>{navigate(`/vendorcard/${id}`)}}/> </td>
+                            <td > <Eye className="cursor-pointer" onClick={()=>{navigate(`/viewallDetailsofvendor/${id}`)}}/> </td>
                         </tr>
                     )
                 })
