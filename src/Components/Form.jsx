@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 //import Component
 import InputField from './InputField'
 import Label from './Label'
+import Button from './Button'
 
 //import lucidicon
 import { Mail, Phone, MapPin, UserRound, Briefcase, ChartScatter, UserStar } from 'lucide-react';
@@ -257,6 +258,25 @@ function Form() {
                     {
                         errors?.lastUsed_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.lastUsed_field?.message}</span>
                     }
+                </div>
+
+                {/* button */}
+                <div className="p-1 mt-8">
+                    {Object.entries(errors).length > 0 ? (
+                        <Button
+                            name="Add Vender"
+                            disabled={true}
+                            type="submit"
+                            className="!px-1 !py-2 !rounded-lg !w-full"
+                        />
+                    ) : (
+                        <Button
+                            name="Add Vender"
+                            disabled={false}
+                            type="button"
+                            className="!px-1 !py-2 !rounded-lg !w-full"
+                        />
+                    )}
                 </div>
 
             </form>
