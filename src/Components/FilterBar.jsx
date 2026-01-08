@@ -1,12 +1,13 @@
-import React from 'react'
+//import component
+import Label from "./Label"
 
 function FilterBar({ searchText, setSearchText, statusFilter, setStatusFilter, serviceTypeFilter, setServiceTypeFilter }) {
   return (
     <>
       <div className='w-full  '>
-        <div className='w-1/2 m-auto flex justify-evenly items-center border border-red-700'>
+        <div className='w-1/2 m-auto flex justify-evenly items-center '>
           {/* Search Bar */}
-          <div className=' border border-red-500'>
+          <div className=' '>
             <input
               type="text"
               value={searchText}
@@ -16,8 +17,8 @@ function FilterBar({ searchText, setSearchText, statusFilter, setStatusFilter, s
             />
           </div>
           {/* Status */}
-          <div>
-            <label className="font-semibold mr-2">Status:</label>
+          <div className="flex justify-center items-center gap-1">
+            <Label title="Status"/>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
@@ -30,8 +31,8 @@ function FilterBar({ searchText, setSearchText, statusFilter, setStatusFilter, s
           </div>
 
           {/* Service Type */}
-          <div>
-            <label className="font-semibold mr-2">Service Type:</label>
+          <div className="flex justify-center items-center gap-1">
+            <Label title="Service Type"/>
             <select
               value={serviceTypeFilter}
               onChange={(e) => setServiceTypeFilter(e.target.value)}
