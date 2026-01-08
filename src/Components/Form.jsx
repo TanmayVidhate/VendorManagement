@@ -55,7 +55,7 @@ function Form() {
 
     return (
         <>
-            <form className='max-h-max sm:w-4/5  sm:m-auto  sm:h-[650px] sm:overflow-y-auto sm:overflow-hidden  lg:w-96 h-[500px] '
+            <form className='max-h-max no-scrollbar sm:w-4/5   sm:m-auto  sm:h-[650px] sm:overflow-y-auto sm:overflow-hidden  lg:w-96 h-[500px] '
                 onSubmit={
                     handleSubmit(onSubmit)
                 }
