@@ -5,9 +5,10 @@ import { useForm } from "react-hook-form"
 
 //import Component
 import InputField from './InputField'
+import Label from './Label'
 
 //import lucidicon
-import { Mail,Phone,MapPin,UserRound,Briefcase,ChartScatter,UserStar  } from 'lucide-react';
+import { Mail, Phone, MapPin, UserRound, Briefcase, ChartScatter, UserStar } from 'lucide-react';
 
 function Form() {
 
@@ -46,21 +47,23 @@ function Form() {
     // console.log("status==",status)
     // console.log("rating==",rating)
     // console.log("lastUsed==",lastUsed)
-    
 
-    const onSubmit= (data) =>{
+
+    const onSubmit = (data) => {
         console.log("hi");
     }
 
     return (
         <>
-            <form className='max-h-max sm:w-4/5  sm:m-auto border border-red-600 sm:h-[650px] sm:overflow-y-auto sm:overflow-hidden  lg:w-96 h-[500px] '
+            <form className='max-h-max sm:w-4/5  sm:m-auto  sm:h-[650px] sm:overflow-y-auto sm:overflow-hidden  lg:w-96 h-[500px] '
                 onSubmit={
                     handleSubmit(onSubmit)
                 }
             >
                 <p className='text-2xl font-semibold ml-2 tracking-wider sm:text-3xl sm:text-center md:text-4xl lg:text-2xl '>Add Vendor Details</p>
+                {/* Service Name */}
                 <div className='flex flex-col p-1 relative sm:mt-7 '>
+                    <Label title="Service Name" />
                     <InputField
                         type="text"
                         name="service_name"
@@ -73,18 +76,20 @@ function Form() {
                             },
                         })}
 
-                    icon={<Briefcase  />}
+                        icon={<Briefcase />}
                     />
                     {
                         errors?.service_name_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base md:text-lg lg:text-sm'>{errors?.service_name_field?.message}</span>
                     }
                 </div>
 
+                {/* service_type */}
                 <div className='flex mt-5 flex-col p-1 relative sm:mt-7'>
+                    <Label title="Service Type" />
                     <InputField
                         type="text"
                         name="service_type"
-                        placeholder="Service Name"
+                        placeholder="Enter Service Type"
                         {...register("service_type_field", {
                             required: "Service Type is required",
                             pattern: {
@@ -93,14 +98,16 @@ function Form() {
                             },
                         })}
 
-                        // icon={}
+                    // icon={}
                     />
                     {
                         errors?.service_type_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base md:text-lg lg:text-sm'>{errors?.service_type_field?.message}</span>
                     }
                 </div>
 
+                {/* contact_person */}
                 <div className=' mt-5 flex flex-col p-1 relative sm:mt-7 '>
+                    <Label title="Contact Person" />
                     <InputField
                         type="text"
                         name="contact_person"
@@ -120,7 +127,9 @@ function Form() {
                     }
                 </div>
 
+                {/* email */}
                 <div className='flex flex-col mt-5 p-1 relative  sm:mt-7'>
+                    <Label title="Email" />
                     <InputField
                         type="email"
                         name="email_field"
@@ -140,8 +149,9 @@ function Form() {
                     }
                 </div>
 
+                {/* Phone Number */}
                 <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    
+                    <Label title="Phone Number" />
                     <InputField
                         type="number"
                         name="phone_field"
@@ -154,15 +164,16 @@ function Form() {
                             },
                         })}
 
-                        icon={<Phone  />}
+                        icon={<Phone />}
                     />
                     {
                         errors?.phone_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.phone_field?.message}</span>
                     }
                 </div>
 
+                {/* location */}
                 <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    
+                    <Label title="Location" />
                     <InputField
                         type="text"
                         name="location"
@@ -182,8 +193,9 @@ function Form() {
                     }
                 </div>
 
+                {/* Status */}
                 <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    
+                    <Label title="Status" />
                     <InputField
                         type="text"
                         name="status"
@@ -196,15 +208,16 @@ function Form() {
                             },
                         })}
 
-                        icon={<ChartScatter  />}
+                        icon={<ChartScatter />}
                     />
                     {
                         errors?.status_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-7 lg:-bottom-5 lg:text-sm '>{errors?.status_field?.message}</span>
                     }
                 </div>
 
+                {/* Rating */}
                 <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    
+                    <Label title="Rating" />
                     <InputField
                         type="number"
                         name="rating"
@@ -217,16 +230,16 @@ function Form() {
                             },
                         })}
 
-                        icon={<UserStar  />}
+                        icon={<UserStar />}
                     />
                     {
                         errors?.rating_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.rating_field?.message}</span>
                     }
                 </div>
 
-
+                {/* Last Used */}
                 <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    
+                    <Label title="Last Used" />
                     <InputField
                         type="text"
                         name="lastused"
@@ -239,14 +252,13 @@ function Form() {
                             },
                         })}
 
-                        // icon={<Mail />}
+                    // icon={<Mail />}
                     />
                     {
                         errors?.lastUsed_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.lastUsed_field?.message}</span>
                     }
                 </div>
 
-                
             </form>
         </>
     )
