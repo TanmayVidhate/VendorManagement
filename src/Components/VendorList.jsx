@@ -17,7 +17,7 @@ function VendorList() {
 
     const navigate = useNavigate();
 
-    // Filter vendors as user types
+    // Filter vendors as name
     const filteredVendors = mockVendors.filter(vendor =>
         vendor.name.toLowerCase().includes(searchText.toLowerCase())
     );
