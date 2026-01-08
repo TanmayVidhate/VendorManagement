@@ -72,7 +72,7 @@ function Form() {
                         {...register("service_name_field", {
                             required: "Service Name is required",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,//
+                                value: /^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$/,
                                 message: "Enter valid Service Name",
                             },
                         })}
@@ -94,7 +94,7 @@ function Form() {
                         {...register("service_type_field", {
                             required: "Service Type is required",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,//
+                                value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
                                 message: "Enter valid Service Type",
                             },
                         })}
@@ -116,7 +116,7 @@ function Form() {
                         {...register("contact_person_field", {
                             required: "contact person name is required",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,//
+                                value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
                                 message: "Enter valid contact person name",
                             },
                         })}
@@ -138,7 +138,7 @@ function Form() {
                         {...register("email_field", {
                             required: "Email is Required ",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
                                 message: "Enter a valid email",
                             },
                         })}
@@ -160,7 +160,7 @@ function Form() {
                         {...register("phone_field", {
                             required: "Phone Number is Required ",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                value: /^\+?[1-9]\d{9,14}$/,
                                 message: "Enter a valid phone number",
                             },
                         })}
@@ -182,7 +182,7 @@ function Form() {
                         {...register("location_field", {
                             required: "Location is Required ",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                value: /^[A-Za-z]+(?:[ ,][A-Za-z]+)*$/,
                                 message: "Enter a valid location",
                             },
                         })}
@@ -204,7 +204,7 @@ function Form() {
                         {...register("status_field", {
                             required: "Status is Required ",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                value: /^(Active|Inactive)$/,
                                 message: "Enter a valid Status",
                             },
                         })}
@@ -226,7 +226,7 @@ function Form() {
                         {...register("rating_field", {
                             required: "Rating is Required ",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                value: /^[1-5]$/,
                                 message: "Enter a valid Rating",
                             },
                         })}
@@ -248,7 +248,7 @@ function Form() {
                         {...register("lastUsed_field", {
                             required: "Last Used is Required ",
                             pattern: {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                value: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
                                 message: "Enter a valid Last Used",
                             },
                         })}
