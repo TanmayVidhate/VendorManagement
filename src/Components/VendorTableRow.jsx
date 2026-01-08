@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 //import dummmy data
 import { mockVendors } from '../data/Vendor'
 
+//import component
+import StatusBadge from "../Components/StatusBadge"
+
 //import lucid icons
 import { Eye } from 'lucide-react';
 
@@ -21,9 +24,7 @@ function VendorTableRow() {
                             <td>{serviceType}</td>
                             <td>{contactPerson}</td>
                             <td>{email}</td>
-                            <td >
-                                <span className={`px-7 py-3 rounded-full text-justify  ${status === "Active" ? "bg-green-200 text-green-700" : "bg-gray-300 text-gray-500"}`} >{status}</span>
-                            </td>
+                            <td ><StatusBadge status={status}/></td>
                             <td >{rating}</td>
                             <td > <Eye className="cursor-pointer" onClick={()=>{navigate(`/viewallDetailsofvendor/${id}`)}}/> </td>
                         </tr>
