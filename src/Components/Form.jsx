@@ -1,287 +1,98 @@
-import React from 'react'
+import React from 'react';
+import { useForm } from "react-hook-form";
 
-//useForm Hook
-import { useForm } from "react-hook-form"
+// Components
+import InputField from './InputField';
+import Label from './Label';
+import Button from './Button';
 
-//import Component
-import InputField from './InputField'
-import Label from './Label'
-import Button from './Button'
-
-//import lucidicon
+// Icons
 import { Mail, Phone, MapPin, UserRound, Briefcase, ChartScatter, UserStar } from 'lucide-react';
 
 function Form() {
-
-    const { register, handleSubmit, formState: { errors }, watch, reset } = useForm({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid },
+        reset
+    } = useForm({
         mode: "onChange",
         defaultValues: {
-            serviceName: "",
-            serviceType: "",
-            contactPerson: "",
-            email: "",
-            phone: "",
-            location: "",
-            status: "",
-            rating: "",
-            lastUsed: "",
+            service_name_field: "",
+            service_type_field: "",
+            contact_person_field: "",
+            email_field: "",
+            phone_field: "",
+            location_field: "",
+            status_field: "",
+            rating_field: "",
+            lastUsed_field: "",
         }
     });
 
-    // watches live changes
-    const serviceName = watch("service_name_field");
-    const serviceType = watch("service_type_field");
-    const contactPerson = watch("contact_person_field");
-    const email = watch("email_field");
-    const phone = watch("phone_field");
-    const location = watch("location_field");
-    const status = watch("status_field");
-    const rating = watch("rating_field")
-    const lastUsed = watch("lastUsed_field");
-
-    // console.log("serviceName==",serviceName)
-    // console.log("serviceType==",serviceType)
-    // console.log("contactPerson==",contactPerson)
-    // console.log("email==",email)
-    // console.log("phone==",phone)
-    // console.log("location==",location)
-    // console.log("status==",status)
-    // console.log("rating==",rating)
-    // console.log("lastUsed==",lastUsed)
-
-
     const onSubmit = (data) => {
-        console.log("hi");
+        console.log(data);
     }
 
+    const formFields = [
+        { label: "Service Name", name: "service_name_field", placeholder: "Xyz Pvt Ltd.", type: "text", icon: <Briefcase />, pattern: /^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$/ },
+        { label: "Service Type", name: "service_type_field", placeholder: "Enter Service Type", type: "text", pattern: /^[A-Za-z]+(?: [A-Za-z]+)*$/ },
+        { label: "Contact Person", name: "contact_person_field", placeholder: "Deva Hole", type: "text", icon: <UserRound />, pattern: /^[A-Za-z]+(?: [A-Za-z]+)*$/ },
+        { label: "Email", name: "email_field", placeholder: "user@example.com", type: "email", icon: <Mail />, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/ },
+        { label: "Phone Number", name: "phone_field", placeholder: "Enter Phone Number", type: "number", icon: <Phone />, pattern: /^\+?[1-9]\d{9,14}$/ },
+        { label: "Location", name: "location_field", placeholder: "Enter Location", type: "text", icon: <MapPin />, pattern: /^[A-Za-z]+(?:[ ,][A-Za-z]+)*$/ },
+        { label: "Status", name: "status_field", placeholder: "Enter Status", type: "text", icon: <ChartScatter />, pattern: /^(Active|Inactive)$/ },
+        { label: "Rating", name: "rating_field", placeholder: "Enter Rating", type: "number", icon: <UserStar />, pattern: /^[1-5]$/ },
+        { label: "Last Used", name: "lastUsed_field", placeholder: "YYYY-MM-DD", type: "text", pattern: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/ },
+    ];
+
     return (
-        <>
-            <form className='max-h-max no-scrollbar sm:w-4/5   sm:m-auto  sm:h-[650px] sm:overflow-y-auto sm:overflow-hidden  lg:w-96 h-[500px] '
-                onSubmit={
-                    handleSubmit(onSubmit)
-                }
-            >
-                <p className='text-2xl font-semibold ml-2 tracking-wider sm:text-3xl sm:text-center md:text-4xl lg:text-2xl '>Add Vendor Details</p>
-                {/* Service Name */}
-                <div className='flex flex-col p-1 relative sm:mt-7 '>
-                    <Label title="Service Name" />
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="m-5
+                max-w-lg sm:max-w-lg lg:max-w-xl
+                w-full mx-auto p-4
+                flex flex-col gap-6
+                overflow-y-auto
+                bg-white/10 backdrop-blur-md
+                rounded-xl shadow-md
+            "
+        >
+            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center">
+                Add Vendor Details
+            </p>
+            {formFields.map((field, index) => {
+                const { label, name, placeholder, type, icon, pattern } = field;
+                return <div key={index} className="flex flex-col relative">
+                    <Label title={label} />
                     <InputField
-                        type="text"
-                        name="service_name"
-                        placeholder="Xyz Pvt Ltd."
-                        {...register("service_name_field", {
-                            required: "Service Name is required",
+                        type={type}
+                        placeholder={placeholder}
+                        icon={icon}
+                        {...register(name, {
+                            required: `${label} is required`,
                             pattern: {
-                                value: /^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$/,
-                                message: "Enter valid Service Name",
-                            },
+                                value: pattern,
+                                message: `Enter valid ${label}`
+                            }
                         })}
-
-                        icon={<Briefcase />}
                     />
-                    {
-                        errors?.service_name_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base md:text-lg lg:text-sm'>{errors?.service_name_field?.message}</span>
-                    }
-                </div>
-
-                {/* service_type */}
-                <div className='flex mt-5 flex-col p-1 relative sm:mt-7'>
-                    <Label title="Service Type" />
-                    <InputField
-                        type="text"
-                        name="service_type"
-                        placeholder="Enter Service Type"
-                        {...register("service_type_field", {
-                            required: "Service Type is required",
-                            pattern: {
-                                value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
-                                message: "Enter valid Service Type",
-                            },
-                        })}
-
-                    // icon={}
-                    />
-                    {
-                        errors?.service_type_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base md:text-lg lg:text-sm'>{errors?.service_type_field?.message}</span>
-                    }
-                </div>
-
-                {/* contact_person */}
-                <div className=' mt-5 flex flex-col p-1 relative sm:mt-7 '>
-                    <Label title="Contact Person" />
-                    <InputField
-                        type="text"
-                        name="contact_person"
-                        placeholder="Deva Hole"
-                        {...register("contact_person_field", {
-                            required: "contact person name is required",
-                            pattern: {
-                                value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
-                                message: "Enter valid contact person name",
-                            },
-                        })}
-
-                        icon={<UserRound />}
-                    />
-                    {
-                        errors?.contact_person_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base md:text-lg lg:text-sm'>{errors?.contact_person_field?.message}</span>
-                    }
-                </div>
-
-                {/* email */}
-                <div className='flex flex-col mt-5 p-1 relative  sm:mt-7'>
-                    <Label title="Email" />
-                    <InputField
-                        type="email"
-                        name="email_field"
-                        placeholder="user@example.com"
-                        {...register("email_field", {
-                            required: "Email is Required ",
-                            pattern: {
-                                value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
-                                message: "Enter a valid email",
-                            },
-                        })}
-
-                        icon={<Mail />}
-                    />
-                    {
-                        errors?.email_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base md:text-lg lg:text-sm'>{errors?.email_field?.message}</span>
-                    }
-                </div>
-
-                {/* Phone Number */}
-                <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    <Label title="Phone Number" />
-                    <InputField
-                        type="number"
-                        name="phone_field"
-                        placeholder="Enter Phone Number"
-                        {...register("phone_field", {
-                            required: "Phone Number is Required ",
-                            pattern: {
-                                value: /^\+?[1-9]\d{9,14}$/,
-                                message: "Enter a valid phone number",
-                            },
-                        })}
-
-                        icon={<Phone />}
-                    />
-                    {
-                        errors?.phone_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.phone_field?.message}</span>
-                    }
-                </div>
-
-                {/* location */}
-                <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    <Label title="Location" />
-                    <InputField
-                        type="text"
-                        name="location"
-                        placeholder="Enter Location"
-                        {...register("location_field", {
-                            required: "Location is Required ",
-                            pattern: {
-                                value: /^[A-Za-z]+(?:[ ,][A-Za-z]+)*$/,
-                                message: "Enter a valid location",
-                            },
-                        })}
-
-                        icon={<MapPin />}
-                    />
-                    {
-                        errors?.location_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.location_field?.message}</span>
-                    }
-                </div>
-
-                {/* Status */}
-                <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    <Label title="Status" />
-                    <InputField
-                        type="text"
-                        name="status"
-                        placeholder="Enter Status"
-                        {...register("status_field", {
-                            required: "Status is Required ",
-                            pattern: {
-                                value: /^(Active|Inactive)$/,
-                                message: "Enter a valid Status",
-                            },
-                        })}
-
-                        icon={<ChartScatter />}
-                    />
-                    {
-                        errors?.status_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-7 lg:-bottom-5 lg:text-sm '>{errors?.status_field?.message}</span>
-                    }
-                </div>
-
-                {/* Rating */}
-                <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    <Label title="Rating" />
-                    <InputField
-                        type="number"
-                        name="rating"
-                        placeholder="Enter Rating"
-                        {...register("rating_field", {
-                            required: "Rating is Required ",
-                            pattern: {
-                                value: /^[1-5]$/,
-                                message: "Enter a valid Rating",
-                            },
-                        })}
-
-                        icon={<UserStar />}
-                    />
-                    {
-                        errors?.rating_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.rating_field?.message}</span>
-                    }
-                </div>
-
-                {/* Last Used */}
-                <div className='flex flex-col p-1 relative mt-9 sm:mt-7 '>
-                    <Label title="Last Used" />
-                    <InputField
-                        type="text"
-                        name="lastused"
-                        placeholder="Enter last Used"
-                        {...register("lastUsed_field", {
-                            required: "Last Used is Required ",
-                            pattern: {
-                                value: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
-                                message: "Enter a valid Last Used",
-                            },
-                        })}
-
-                    // icon={<Mail />}
-                    />
-                    {
-                        errors?.lastUsed_field && <span className='text-white text-sm w-full absolute -bottom-5 sm:text-base sm:-bottom-5 md:text-lg md:-bottom-6 lg:-bottom-5 lg:text-sm '>{errors?.lastUsed_field?.message}</span>
-                    }
-                </div>
-
-                {/* button */}
-                <div className="p-1 mt-8">
-                    {Object.entries(errors).length > 0 ? (
-                        <Button
-                            name="Add Vender"
-                            disabled={true}
-                            type="submit"
-                            className="!px-1 !py-2 !rounded-lg !w-full"
-                        />
-                    ) : (
-                        <Button
-                            name="Add Vender"
-                            disabled={false}
-                            type="button"
-                            className="!px-1 !py-2 !rounded-lg !w-full"
-                        />
+                    {errors?.[name] && (
+                        <span className="text-red-400 text-sm mt-1 block sm:text-base md:text-lg lg:text-sm">
+                            {errors[name].message}
+                        </span>
                     )}
                 </div>
+            })}
 
-            </form>
-        </>
-    )
+            <Button
+                name="Add Vendor"
+                type="submit"
+                disabled={!isValid}
+                className="!w-full !px-4 !py-2 !rounded-lg !mt-2"
+            />
+        </form>
+    );
 }
 
-export default Form
+export default Form;
