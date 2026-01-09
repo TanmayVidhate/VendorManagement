@@ -1,7 +1,7 @@
 function VendorCard({record}) {
 return (
     <>
-        <div className="max-w-xl mx-auto bg-white shadow-md rounded-xl overflow-hidden p-6 my-4 hover:shadow-lg transition-shadow duration-300">
+        <div className="max-w-xl mx-auto bg-white/85 shadow-md rounded-xl overflow-hidden p-6 my-4 hover:shadow-lg hover:transition-shadow hover:duration-300">
           {/* Vendor Header */}
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-gray-800">{record.name}</h2>
