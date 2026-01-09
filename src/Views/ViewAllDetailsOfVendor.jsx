@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 import { mockVendors } from "../data/Vendor"
@@ -11,17 +11,17 @@ import VendorCard from '../Components/VendorCard'
 import { House } from 'lucide-react';
 
 function ViewAllDetailsOfVendor() {
-    const navigate = useNavigate();
-    const { id } = useParams();
-    const record = mockVendors.find(mockVendor => mockVendor.id === id);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const record = mockVendors.find(mockVendor => mockVendor.id === id);
   return (
-    <div className="h-[100vh] w-[100vw]  bg-gradient-to-t from-red-500  to-fuchsia-600   overflow-hidden p-6  text-white  ">
+    <div className="min-h-screen w-[100vw]  bg-gradient-to-t from-red-500  to-fuchsia-600   overflow-hidden p-6  text-white  ">
 
-        <VendorCard record={record}/>
+      <VendorCard record={record} />
 
-        <div className='absolute right-8 bottom-10 '>
-          <House color='white' onClick={() => { navigate("/") }} size={40} />
-        </div>
+      <div className='fixed right-6 bottom-6 cursor-pointer bg-black/40 hover:bg-black/60 p-4 rounded-full transition" '>
+        <House color='white' onClick={() => { navigate("/") }} size={40} />
+      </div>
     </div>
   )
 }
