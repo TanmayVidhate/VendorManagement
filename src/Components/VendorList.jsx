@@ -1,75 +1,80 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-//import dummmy data
-import { tableHeadings, mockVendors } from '../data/Vendor'
+// dummy data
+import { tableHeadings, mockVendors } from "../data/Vendor";
 
-// import  Component
-import VendorTableRow from './VendorTableRow'
-import FilterBar from './FilterBar';
+// components
+import VendorTableRow from "./VendorTableRow";
+import FilterBar from "./FilterBar";
 
-//lucid icons
-import { Plus } from 'lucide-react';
+// icons
+import { Plus } from "lucide-react";
 
 function VendorList() {
+  const [searchText, setSearchText] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [serviceTypeFilter, setServiceTypeFilter] = useState("");
 
-    const [searchText, setSearchText] = useState("");
-    const [statusFilter, setStatusFilter] = useState("");
-    const [serviceTypeFilter,setServiceTypeFilter] = useState("");
+  const navigate = useNavigate();
 
+  // filtering logic
+  const filteredVendors = mockVendors.filter((vendor) => {
+    const searchMatch =
+      !searchText ||
+      vendor.name.toLowerCase().includes(searchText.toLowerCase());
 
-    const navigate = useNavigate();
+    const statusMatch = !statusFilter || vendor.status === statusFilter;
+    const typeMatch =
+      !serviceTypeFilter || vendor.serviceType === serviceTypeFilter;
 
-    // Filter vendors from name
-    const filteredVendors = mockVendors.filter(mockVendor => {
+    return searchMatch && statusMatch && typeMatch;
+  });
 
-        const searchMatch = !searchText || mockVendor.name.toLowerCase().includes(searchText.toLowerCase());
-        const statusMatch = !statusFilter || mockVendor.status === statusFilter;
-        const typeMatch = !serviceTypeFilter || mockVendor.serviceType === serviceTypeFilter;
+  return (
+    <div className="min-h-screen w-full bg-gradient-to-t from-red-500 to-fuchsia-600 px-4 sm:px-6 lg:px-10">
+      
+      {/* Filter Bar */}
+      <div className="pt-6 flex justify-center">
+        <FilterBar
+          searchText={searchText}
+          setSearchText={setSearchText}
+          statusFilter={statusFilter}
+          setStatusFilter={setStatusFilter}
+          serviceTypeFilter={serviceTypeFilter}
+          setServiceTypeFilter={setServiceTypeFilter}
+        />
+      </div>
 
-        return searchMatch && statusMatch && typeMatch ;
-    });
+      {/* Table Wrapper */}
+      <div className="mt-6 flex justify-center">
+        <div className="w-full max-w-7xl overflow-x-auto rounded-lg shadow-lg">
+          <table className="min-w-[900px] w-full text-white font-semibold">
+            <thead className="bg-white/85 text-black">
+              <tr>
+                {tableHeadings.map((heading, i) => (
+                  <th key={i} className="p-3 text-center whitespace-nowrap">
+                    {heading}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <VendorTableRow filteredVendors={filteredVendors} />
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-    return (
-        <>
-            {/* Main Div / outer Divs */}
-            <div className='w-screen h-screen bg-gradient-to-t from-red-500  to-fuchsia-600 relative '>
-                <div className='absolute w-full h-20 flex items-end justify-center'>
-                    <FilterBar
-                        searchText={searchText}
-                        setSearchText={setSearchText}
-
-                        statusFilter={statusFilter}
-                        setStatusFilter={setStatusFilter}
-
-                        serviceTypeFilter={serviceTypeFilter}
-                        setServiceTypeFilter={setServiceTypeFilter}
-                    />
-                </div>
-                
-                <div className='h-full flex justify-center items-center  '>
-
-                    <table className="w-4/5 rounded-lg overflow-hidden text-white  border-white font-bold">
-                        <thead className="bg-white text-black">
-                            <tr>
-                                {
-                                    tableHeadings.map((tableHeading, i) => {
-                                        return (
-                                            <th className="p-3 text-center" key={i}>{tableHeading}</th>
-                                        )
-                                    })
-                                }
-                            </tr>
-                        </thead>
-                        <tbody >
-                            <VendorTableRow filteredVendors={filteredVendors} />
-                        </tbody>
-                    </table>
-                </div>
-                <button className='absolute right-8 bottom-10' onClick={() => navigate(`/addvendor`)}><Plus color='white' size={40} /></button>
-            </div>
-        </>
-    )
+      {/* Floating Add Button */}
+      <button
+        onClick={() => navigate("/addvendor")}
+        className="fixed right-6 bottom-6 bg-black/40 hover:bg-black/60 p-4 rounded-full transition"
+      >
+        <Plus className="text-white" size={32} />
+      </button>
+    </div>
+  );
 }
 
-export default VendorList
+export default VendorList;
