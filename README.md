@@ -34,3 +34,19 @@ This project allows users to **add, view, filter, and manage vendors** efficient
   - Lucide React Icons
 
 ---
+
+- **ScreenShots**:
+
+![filter](./src/assets/img_1.png)
+
+---
+
+![card](./src/assets/img_2.png)
+
+---
+
+![form](./src/assets/img_3.png)
+
+---
+
+![table](./src/assets/img_4.png)
