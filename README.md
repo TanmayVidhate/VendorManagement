@@ -1,6 +1,6 @@
 # Vendor Management System
 
-A modern **Vendor Management System** built with **React**, **Tailwind CSS**, **React Hook Form**, **Node.js**, **Express**, and **MongoDB**.  
+A modern **Vendor Management System** built with **React**, **Tailwind CSS**, **React Hook Form**.  
 This project allows users to **add, view, filter, and manage vendors** efficiently in a responsive dashboard interface.
 
 ---
