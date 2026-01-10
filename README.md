@@ -18,7 +18,7 @@ This project allows users to **add, view, filter, and manage vendors** efficient
   - Works perfectly on **mobile, tablet, and desktop**
   - Horizontal scroll for tables on smaller screens
 - **Modern UI**:
-  - Gradient backgrounds, shadows, glassmorphism effects
+  - Gradient backgrounds, shadows
   - Icons using **Lucide React**
 - **Reusable Components**:
   - Input fields, labels, buttons, filter bars, table rows
